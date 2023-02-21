@@ -1,0 +1,30 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+        String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+            int n = (int) (Math.random() * 1_000_000);
+            n=n*3;
+            n=n+0b10101;
+            n=n+0xFF;
+            n=n*6;
+        System.out.println(n);
+            int sum=0;
+            while(n>0)
+            {
+                sum=sum+n%10;
+                n=n/10;
+            }
+            int c=0;
+            while(sum>0)
+            {
+                c=c+sum%10;
+                sum=sum/10;
+                if(sum==0&& c>=10) {
+                    sum = c;
+                    c = 0;
+                }
+            }
+        System.out.println(c);
+        System.out.println( "Willy-nilly, this semester I will learn " + languages[c]);
+        }
+}
