@@ -1,7 +1,14 @@
+import java.util.Scanner;
+
 public class Lab1 {
     public static void main(String args[]) {
         Lab1 lab1 = new Lab1();
-        lab1.compulsory();
+        //lab1.compulsory();
+        /*long start1 = System.nanoTime();
+        lab1.homework();
+        long end1 = System.nanoTime();
+        System.out.println("Time in nanoseconds: "+ (end1-start1));*/
+        lab1.bonus();
     }
     void compulsory() {
         System.out.println("Hello world!");
@@ -30,5 +37,46 @@ public class Lab1 {
         }
         System.out.println(c);
         System.out.println( "Willy-nilly, this semester I will learn " + languages[c]);
+    }
+    void homework() {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        //System.out.println(n);
+        try {
+            Integer.parseInt(input);
+            System.out.println(input + " is a valid integer");
+        } catch (NumberFormatException e) {
+            System.out.println(input + " is not a valid integer");
+        }
+        int n = Integer.valueOf(input);
+        int[][] latinSquareMatrix = new int[n][n];
+        int k;
+        for (int i = 0; i < n; i++) {
+            k = i;
+            for (int j = 0; j < n; j++) {
+                k++;
+                if (k == n + 1) k = 1;
+                latinSquareMatrix[i][j] = k;
+
+            }
+        }
+        String concatenareLinie = " ";
+        if(n<30000) {
+            for (int i = 0; i < n; i++) {
+                k = i;
+                concatenareLinie = " ";
+                for (int j = 0; j < n; j++) {
+                    concatenareLinie = concatenareLinie.concat(String.valueOf(latinSquareMatrix[i][j]));
+                    concatenareLinie = concatenareLinie.concat(" ");
+                    //System.out.print(latinSquareMatrix[i][j] + " ");
+                }
+
+                System.out.println(concatenareLinie);
+               // System.out.println();
+            }
+        }
+    }
+    void bonus() {
+   
     }
 }
