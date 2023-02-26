@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Lab1 {
     public static void main(String args[]) {
         Lab1 lab1 = new Lab1();
-        //lab1.compulsory();
-        /*long start1 = System.nanoTime();
+        lab1.compulsory();
+        long start1 = System.nanoTime();
         lab1.homework();
         long end1 = System.nanoTime();
-        System.out.println("Time in nanoseconds: "+ (end1-start1));*/
+        System.out.println("Time in nanoseconds: "+ (end1-start1));
         lab1.bonus();
     }
     void compulsory() {
