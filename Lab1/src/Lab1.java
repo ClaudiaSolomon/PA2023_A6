@@ -8,7 +8,6 @@ public class Lab1 {
         lab1.homework();
         long end1 = System.nanoTime();
         System.out.println("Time in nanoseconds: "+ (end1-start1));
-        lab1.bonus();
     }
     void compulsory() {
         System.out.println("Hello world!");
@@ -47,6 +46,7 @@ public class Lab1 {
             System.out.println(input + " is a valid integer");
         } catch (NumberFormatException e) {
             System.out.println(input + " is not a valid integer");
+            System.out.println(e);
         }
         int n = Integer.valueOf(input);
         int[][] latinSquareMatrix = new int[n][n];
@@ -63,7 +63,6 @@ public class Lab1 {
         String concatenareLinie = " ";
         if(n<30000) {
             for (int i = 0; i < n; i++) {
-                k = i;
                 concatenareLinie = " ";
                 for (int j = 0; j < n; j++) {
                     concatenareLinie = concatenareLinie.concat(String.valueOf(latinSquareMatrix[i][j]));
@@ -72,11 +71,21 @@ public class Lab1 {
                 }
 
                 System.out.println(concatenareLinie);
+
+            }
+            System.out.println();
+            String concatenareColoana = " ";
+                for (int j = 0; j < n; j++) {
+                    concatenareColoana = " ";
+                    for (int i = 0; i < n; i++) {
+                        concatenareColoana = concatenareColoana.concat(String.valueOf(latinSquareMatrix[j][i]));
+                        concatenareColoana = concatenareColoana.concat(" ");
+                        //System.out.print(latinSquareMatrix[i][j] + " ");
+                    }
+                    System.out.println(concatenareColoana);
+                }
+
                // System.out.println();
             }
         }
-    }
-    void bonus() {
-
-    }
 }
