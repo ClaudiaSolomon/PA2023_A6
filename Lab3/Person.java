@@ -1,10 +1,38 @@
 package Lab3;
 
-public class Person implements Comparable<Person>, Node {
-    private String name;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public abstract class Person implements Comparable<Person>, Node {
+    protected String name;
+    protected String birthDate;
+    protected  static int idMax;
+    protected int id;
+    private Map<Node, String> relationships = new HashMap<>();
+    public static int[][] matrixRelationships =new int[25][25];
+    public Person() {
+    }
 
     public Person(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    public static int getIdMax() {
+        return idMax;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public void setName(String name) {
@@ -22,33 +50,26 @@ public class Person implements Comparable<Person>, Node {
                 '}';
     }
 
-    public int compareTo(Person person)
-    {
-        if (this.name == null || person.name == null) {
-            NullPointerException e=new NullPointerException();
-            throw(e);
+    @Override
+    public int compareTo(Person person) {
+        return this.name.compareTo(person.name);
+    }
+    public void addRelationship(Node node, String value) {
+        relationships.put(node, value);
+        if(node instanceof Person) {
+            matrixRelationships[this.getId()][node.getId()]=1;
         }
-        int x;
-        if(this.name.length()>person.name.length())
-            x=person.name.length();
-        else
-            x=this.name.length();
-        for(int i=0;i<x;i++)
-        {
-            if(this.name.charAt(i)!=person.name.charAt(i))
-            {
-                return (this.name.charAt(i)-person.name.charAt(i));
+        if(node instanceof Company) {
+            matrixRelationships[this.getId()][node.getId()+Person.getIdMax()]=1;
+        }
+    }
+    public static int PrintMatrixRelationships() {
+        for (int i = 1; i <= Network.getNumberOfNodes(); i++) {
+            for (int j = 1; j <= Network.getNumberOfNodes(); j++) {
+                System.out.print(matrixRelationships[i][j]+" ");
             }
+            System.out.println();
         }
-        if(this.name.length()==person.name.length())
-            return 0;
-        else
-        {
-            if(this.name.length()>person.name.length())
-            {
-                return 1;
-            }
-            else  return -1;
-        }
+        return 0;
     }
 }
