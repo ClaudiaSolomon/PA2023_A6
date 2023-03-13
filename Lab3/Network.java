@@ -6,6 +6,7 @@ public class Network {
     private static List<Node> nodes = new ArrayList<>();
     private static int numberOfNodes = 0;
     private static Map<Node, Integer> numberOfConnections = new HashMap<>();
+    private static List<List<Node>> relationships=new ArrayList<>();
     private int id;
 
     public void setNodes(List<Node> nodes) {
@@ -30,13 +31,6 @@ public class Network {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Lab3.Network{" +
-                "nodes=" + nodes +
-                '}';
-    }
-
     public static Map<Node, Integer> getNumberOfConnections() {
         return numberOfConnections;
     }
@@ -47,10 +41,6 @@ public class Network {
             nrConnections = 0;
             if (i instanceof Person) {
                 for (int x = 1; x <= Person.getIdMax()+Company.getIdMax(); x++) {
-                    //System.out.println(i.getId());
-                    if (Person.matrixRelationships[x][i.getId()] == 1) {
-                        nrConnections++;
-                    }
                     if (Person.matrixRelationships[i.getId()][x] == 1) {
                         nrConnections++;
                     }
@@ -74,5 +64,22 @@ public class Network {
         sorted.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         return sorted;
     }
+    public static String GetRelationships()
+    {
+        String output = "";
+        for(Node i: nodes)
+        {
+            if(i instanceof Person)
+            {
+                output=output.concat(i.getName()+":\n");
+                 output= output.concat(((Person) i).getRelationships().toString()+ "\n");
+            }
+        }
+       return output;
+    }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

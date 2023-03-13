@@ -51,6 +51,7 @@ public class Main {
         Network.Importance();
         //System.out.println(Network.getNumberOfConnections());
         System.out.println(Network.PrintWithImportance());
+        System.out.println(Network.GetRelationships());
 
 
     }

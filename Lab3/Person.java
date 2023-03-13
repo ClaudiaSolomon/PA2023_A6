@@ -39,6 +39,10 @@ public abstract class Person implements Comparable<Person>, Node {
         this.name = name;
     }
 
+    public Map<Node, String> getRelationships() {
+        return relationships;
+    }
+
     public String getName() {
         return name;
     }
@@ -57,7 +61,9 @@ public abstract class Person implements Comparable<Person>, Node {
     public void addRelationship(Node node, String value) {
         relationships.put(node, value);
         if(node instanceof Person) {
+            ((Person) node).relationships.put(this,value);
             matrixRelationships[this.getId()][node.getId()]=1;
+            matrixRelationships[node.getId()][this.getId()]=1;
         }
         if(node instanceof Company) {
             matrixRelationships[this.getId()][node.getId()+Person.getIdMax()]=1;
