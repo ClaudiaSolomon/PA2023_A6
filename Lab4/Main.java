@@ -37,14 +37,43 @@ public class Main {
         Problem.AddList(listOfStudents.get(1), listProj2);
         Problem.AddList(listOfStudents.get(2), listProj3);
         System.out.println(Problem.getPrefMap());
-       // System.out.println(Problem.DisplayLessPref());
+        Problem.GreedyAlg();
+        System.out.println(Problem.getGreedyMap());
+        System.out.println("Least than the average of preferences: "+Problem.DisplayLessPref());
 
         Faker faker = new Faker();
 
-        String name_student = faker.name().name();
+        Student student1 = new Student(faker.name().name());
+        Student student2 = new Student(faker.name().name());
+        Student student3 = new Student(faker.name().name());
         //System.out.println(name_student);
-        String name_project=faker.company().name();
+        Project project1=new Project(faker.company().name());
+        Project project2=new Project(faker.company().name());
+        Project project3=new Project(faker.company().name());
+
+        List<Student> fakerStudent=new ArrayList<>();
+        fakerStudent.add(student1);
+        fakerStudent.add(student2);
+        fakerStudent.add(student3);
+
+        List<Project> fakerProject1=new ArrayList<>();
+        fakerProject1.add(project1);
+        fakerProject1.add(project2);
+        fakerProject1.add(project3);
+
+        List<Project> fakerProject2=new ArrayList<>();
+        fakerProject2.add(project1);
+        fakerProject2.add(project2);
+
+        List<Project> fakerProject3=new ArrayList<>();
+        fakerProject3.add(project1);
+
+        Collections.sort(fakerStudent);
        // System.out.println(name_project);
+        Problem.AddList(fakerStudent.get(0),fakerProject1);
+        Problem.AddList(fakerStudent.get(1), fakerProject2);
+        Problem.AddList(fakerStudent.get(2), fakerProject3);
+        System.out.println(Problem.getPrefMap());
 
         Problem.GreedyAlg();
         System.out.println(Problem.getGreedyMap());
