@@ -13,6 +13,6 @@ public class Main {
         catalog.add(article);
 
         CatalogUtil.save(catalog, "./catalog.json");
-       System.out.println( CatalogUtil.load("C:\\Users\\Claudia\\IdeaProjects\\Lab5\\catalog.json")+catalog.getName());
+       System.out.println( CatalogUtil.load("C:\\Users\\Claudia\\IdeaProjects\\Lab5\\catalog.json"));
     }
 }
