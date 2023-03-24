@@ -1,0 +1,1 @@
+Document{id='article1', title='titlu1', location='null', tags={}}Document{id='article1', title='titlu1', location='null', tags={}}Document{id='article1', title='titlu1', location='null', tags={}}Document{id='article1', title='titlu1', location='null', tags={}}
