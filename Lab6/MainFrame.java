@@ -7,7 +7,7 @@ import static java.awt.BorderLayout.*;
 public class MainFrame extends JFrame {
     ConfigPanel configPanel;
     ControlPanel controlPanel;
-    DrawingPanel canvas;
+   static  DrawingPanel canvas;
 
     public MainFrame() {
         super("My Drawing Application");
@@ -19,7 +19,7 @@ public class MainFrame extends JFrame {
 
         configPanel=new ConfigPanel(this);
         controlPanel=new ControlPanel(this);
-        canvas = new DrawingPanel(this);
+        canvas = new DrawingPanel(this,ConfigPanel.getNumVertices(),ConfigPanel.getEdgeProbability());
 
         add(configPanel,NORTH);
         add(controlPanel,SOUTH);
