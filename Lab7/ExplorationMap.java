@@ -21,24 +21,36 @@ public class ExplorationMap {
 
     public boolean visit(int row, int col, Robot robot) {
         synchronized (matrix[row][col]) {
-            if (matrix[row][col].isEmpty()){
+            if (matrix[row][col].isEmpty()==true){
 //                the robot extract tokens
-                List<Token> listOfTokens= Exploration.getMem().extractTokens(this.sizeMatrix);
+                List<Token> listOfTokens= robot.explore.getMem().extractTokens(5);
                 //                and store the tokens in the cell(it becomes visited)
                 matrix[row][col].addAll(listOfTokens);
+                System.out.println(listOfTokens);
+                System.out.println();
                 //                display a success message
-                System.out.println("s-a vizitat cell-ul: row= "+row+" col= "+col);
-                return true;
+                System.out.println(robot.getName()+" s-a vizitat cell-ul: row= "+row+" col= "+col);
             }
             else {
-                System.out.println("cell deja vizitat");
-                return false;
+                System.out.println(robot.getName()+" cell deja vizitat");
             }
+            return isFull();
         }
     }
 
     public static List<Token>[][] getMatrix() {
         return matrix;
+    }
+    public boolean isFull()
+    {
+        for(int i=0;i<sizeMatrix;i++)
+        {
+            for(int j=0;j<sizeMatrix;j++)
+            {
+                if(matrix[i][j].isEmpty()==true) return true;
+            }
+        }
+        return false;
     }
 
     @Override

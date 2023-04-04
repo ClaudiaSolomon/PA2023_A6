@@ -3,10 +3,12 @@ package org.example.Lab7;
 import java.util.*;
 
 public class SharedMemory {
-    private final Queue<Token> listOfTokens=new LinkedList<>();
+    private final List<Token> listOfTokens=new LinkedList<>();
     public SharedMemory(int n) {
-        Token token=new Token(n);
-        listOfTokens.add(token);
+        for(int i=0;i<n;i++)
+        {
+            listOfTokens.add(new Token(i));
+        }
         Collections.shuffle((List<?>) listOfTokens);
     }
     public synchronized List<Token> extractTokens(int howMany) {
@@ -15,7 +17,8 @@ public class SharedMemory {
             if (listOfTokens.isEmpty()) {
                 break;
             }
-            extracted.add(listOfTokens.poll());
+            Random rand=new Random();
+            extracted.add(listOfTokens.get(rand.nextInt(listOfTokens.size())));
         }
         return extracted;
     }

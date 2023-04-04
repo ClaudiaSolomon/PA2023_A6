@@ -6,7 +6,7 @@ import org.example.Lab7.ExplorationMap;
 
 public class Robot implements Runnable {
     private String name;
-    private boolean running;
+    private boolean running=true;
     Exploration explore;
     public Robot(String name) {
         this.name = name;
@@ -22,22 +22,21 @@ public class Robot implements Runnable {
     }
 
     public void run() {
-        running=true;
-        Boolean vizitare;
         while (running) {
 //            pick a new cell to explore
             int row= (int) (Math.random()*(ExplorationMap.getMatrix().length));
             int col=(int)(Math.random()*(ExplorationMap.getMatrix()[0].length));
-            vizitare=explore.getMap().visit(row, col, this);
+            if(explore.getMap().visit(row, col, this)==false)
+            {
+                running=false;
+            }
             //System.out.println(this.name+" visited a new cell");
             //            make the robot sleep for some time
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
-                running=false;
                 throw new RuntimeException(e);
             }
-            if(vizitare==false) return;
         }
     }
 }
