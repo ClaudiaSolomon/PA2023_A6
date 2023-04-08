@@ -4,15 +4,24 @@ package org.example.Lab7;
 import org.example.Lab7.Exploration;
 import org.example.Lab7.ExplorationMap;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Robot implements Runnable {
     private String name;
     private boolean running=true;
+    private static Map<Robot,Integer> numberOfTokens=new HashMap<>();
     Exploration explore;
     public Robot(String name) {
         this.name = name;
         this.explore=new Exploration();
     }
 
+    public static Map<Robot, Integer> getNumberOfTokens() {
+        return numberOfTokens;
+    }
     public String getName() {
         return name;
     }
@@ -37,6 +46,18 @@ public class Robot implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+    public void stop()
+    {
+        running=false;
+    }
+    public void sleep(int time)
+    {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
