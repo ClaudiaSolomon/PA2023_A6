@@ -8,8 +8,9 @@ import static org.example.Lab7.Robot.getNumberOfTokens;
 
 public class Exploration {
     private final SharedMemory mem = new SharedMemory(10);
-    private final ExplorationMap map = new ExplorationMap(10);
+    private final ExplorationMap map = new ExplorationMap(5);
     private static final List<Robot> robots = new ArrayList<>();
+    private int nrOfRobots=0;
     private static long start;
     private static long end;
     public void startAll() {
@@ -71,8 +72,8 @@ public class Exploration {
         explore.addRobot(new Robot("R2D2"));
         explore.addRobot(new Robot("Optimus Prime"));
         start=System.currentTimeMillis();
-        //10 secunde
-        end=start+10000;
+        //30 secunde
+        end=start+30000;
         new Thread(() -> {
         do{
             Scanner scanner=new Scanner(System.in);
@@ -134,6 +135,7 @@ private static boolean timeKeeper(long time)
     private void addRobot(Robot robot) {
         robots.add(robot);
         getNumberOfTokens().put(robot,0);
+        nrOfRobots++;
     }
 
     public ExplorationMap getMap() {
@@ -143,6 +145,11 @@ private static boolean timeKeeper(long time)
     public SharedMemory getMem() {
         return mem;
     }
+
+    public int getNrOfRobots() {
+        return nrOfRobots;
+    }
+
     public static void viewMap() {
         for(Robot robot: robots)
         {

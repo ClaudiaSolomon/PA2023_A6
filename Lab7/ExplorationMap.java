@@ -31,10 +31,13 @@ public class ExplorationMap {
 //                System.out.println(listOfTokens);
 //                System.out.println();
                 //                display a success message
-//                System.out.println(robot.getName()+" s-a vizitat cell-ul: row= "+row+" col= "+col);
+                System.out.println(robot.getName()+" s-a vizitat cell-ul: row= "+row+" col= "+col);
             }
             else {
-//                System.out.println(robot.getName()+" cell deja vizitat");
+                System.out.println(robot.getName()+" cell deja vizitat");
+                //se alege alta linie pentru robot daca mai exista
+                if(robot.row+1<sizeMatrix)
+                    robot.row++;
             }
             return isFull();
         }

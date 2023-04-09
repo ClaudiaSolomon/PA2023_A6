@@ -12,6 +12,8 @@ import java.util.Map;
 public class Robot implements Runnable {
     private String name;
     private boolean running=true;
+    private int col=-1;
+    public int row;
     private static Map<Robot,Integer> numberOfTokens=new HashMap<>();
     Exploration explore;
     public Robot(String name) {
@@ -30,12 +32,38 @@ public class Robot implements Runnable {
         this.name = name;
     }
 
+//se alege o linie si se parcurge de acelasi robot
+    public int algorithmExploring()
+    {
+        for(int i=0;i<ExplorationMap.getMatrix().length;i++)
+        {
+            if(ExplorationMap.getMatrix()[i][0].isEmpty())
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void run() {
+        row=algorithmExploring();
         while (running) {
 //            pick a new cell to explore
-            int row= (int) (Math.random()*(ExplorationMap.getMatrix().length));
-            int col=(int)(Math.random()*(ExplorationMap.getMatrix()[0].length));
-            if(explore.getMap().visit(row, col, this)==false)
+//            int row= (int) (Math.random()*(ExplorationMap.getMatrix().length));
+//            int col=(int)(Math.random()*(ExplorationMap.getMatrix()[0].length));
+            if(col+1==ExplorationMap.getMatrix().length)
+            {
+                col=0;
+               row=algorithmExploring();
+                if(row==-1)
+                {
+                    running=false;
+                    break;
+                }
+            }
+            else
+                col++;
+            if(!explore.getMap().visit(row, col, this))
             {
                 running=false;
             }
