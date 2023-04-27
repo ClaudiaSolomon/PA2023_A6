@@ -2,22 +2,22 @@ create table `java`.`albums`
 (
 id INT auto_increment,
 release_year INT,
-title VARCHAR(45),
-artist VARCHAR(45),
-genre VARCHAR(45),
+name VARCHAR(256),
+artist VARCHAR(256),
+genre VARCHAR(256),
 PRIMARY KEY(id)
 );
 
 create table `java`.`artists`
 (
 id INT auto_increment,
-name VARCHAR(45),
+name VARCHAR(256),
 PRIMARY KEY(id));
 
 create table `java`.`genres`
 (
 id INT auto_increment,
-name VARCHAR(45),
+name VARCHAR(256),
 PRIMARY KEY(id));
 
 create table `java`.`junction`
