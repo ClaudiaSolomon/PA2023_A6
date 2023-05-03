@@ -2,17 +2,19 @@ package org.example.Lab9.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "genres", schema = "java", catalog = "")
 @NamedQueries({
-        @NamedQuery(name = "Genre.findAll",
+        @NamedQuery(name = "GenresEntity.findAll",
                 query = "select e from GenresEntity e order by e.name"),
-        @NamedQuery(name = "Genre.findById",
+        @NamedQuery(name = "GenresEntity.findById",
                 query = "select e from GenresEntity e where e.id = :id"),
-        @NamedQuery(name = "Genre.findByName",
+        @NamedQuery(name = "GenresEntity.findByName",
                 query = "select e from GenresEntity e where e.name = :name"),
 })
-public class GenresEntity {
+public class GenresEntity extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -20,7 +22,10 @@ public class GenresEntity {
     @Basic
     @Column(name = "name")
     private String name;
-
+    @ManyToMany
+    private Set<ArtistsEntity> artistsEntitySet;
+    @ManyToMany
+    private Set<AlbumsEntity> albumsEntitySet;
     public GenresEntity() {
     }
 
