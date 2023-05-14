@@ -24,10 +24,12 @@ public class Game {
                 System.out.println(aux);
                 if(Game.gameWon("0")==1)
                 {
+                    GameServer.setPlayersTo0();
                     return "0 won!";
                 }
              if(nrOfMoves==15*15)
              {
+                 GameServer.setPlayersTo0();
                  return "Draw!";
              }
              while (nrOfMoves % 2 == 0&& GameServer.getNrOfPlayers()!=0) {
@@ -35,10 +37,12 @@ public class Game {
              }
              if(Game.gameWon("X")==1)
              {
+                 GameServer.setPlayersTo0();
                  return "X won!";
              }
              if(nrOfMoves==15*15)
              {
+                 GameServer.setPlayersTo0();
                  return "Draw!";
              }
 
@@ -48,10 +52,12 @@ public class Game {
                 System.out.println(aux);
                 if(Game.gameWon("X")==1)
                 {
+                    GameServer.setPlayersTo0();
                     return "X won!";
                 }
                 if(nrOfMoves==15*15)
                 {
+                    GameServer.setPlayersTo0();
                     return "Draw!";
                 }
                 while (nrOfMoves % 2 != 0&& GameServer.getNrOfPlayers()!=0) {
@@ -59,10 +65,12 @@ public class Game {
                 }
                 if(Game.gameWon("0")==1)
                 {
+                    GameServer.setPlayersTo0();
                     return "0 won!";
                 }
                 if(nrOfMoves==15*15)
                 {
+                    GameServer.setPlayersTo0();
                     return "Draw!";
                 }
 
