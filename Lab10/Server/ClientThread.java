@@ -22,7 +22,8 @@ public class ClientThread extends Thread{
                 if(System.currentTimeMillis()>Player.getEnd()&& GameServer.startGame)
                 {
                     System.out.println("Time ran out");
-                    GameServer.setNrOfPlayers(-2);
+//                    GameServer.setNrOfPlayers(-1);
+                    GameServer.setPlayersTo0();
                     out.println("Time ran out!");
                 }
                 if (request.equalsIgnoreCase("stop")) {
