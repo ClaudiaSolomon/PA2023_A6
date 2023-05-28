@@ -1,4 +1,4 @@
-package org.example.Lab12;
+package org.example.Lab12.Loader;
 
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -9,6 +9,6 @@ public class MyClassLoader extends URLClassLoader {
     }
     @Override
     public void addURL(URL url) {
-        super.addURL(url); //addUrl is protected in the superclass
+        super.addURL(url);
     }
 }
